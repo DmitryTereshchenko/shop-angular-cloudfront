@@ -3,13 +3,20 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve -o",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prepare": "husky install",
-    "lint:format": "npx --no-install lint-staged && npx --no-install pretty-quick --staged"
+    "lint:format": "npx --no-install lint-staged && npx --no-install pretty-quick --staged",
+    "deploy:s3": "serverless client deploy --no-config-change --no-policy-change --no-cors-change",
+    "deploy": "npm run build && npm run deploy:s3 -- --no-confirm",
+    "cloudfront:setup": "serverless deploy",
+    "cloudfront:domainInfo": "serverless domainInfo",
+    "cloudfront:invalidateCache": "serverless invalidateCloudFrontCache",
+    "cloudfront:build:deploy": "npm run deploy && npm run cloudfront:invalidateCache",
+    "cloudfront:update:build:deploy": "npm run cloudfront:setup && npm run cloudfront:build:deploy"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +32,8 @@
     "@angular/router": "~12.0.0",
     "bootstrap": "^4.6.0",
     "rxjs": "~6.6.0",
+    "serverless-finch": "^4.0.0",
+    "serverless-single-page-app-plugin": "file:./serverless-single-page-app-plugin",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
   },
@@ -39,6 +48,7 @@
     "@angular/compiler-cli": "~12.0.0",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@schematics/angular": "^14.0.5",
     "@types/jasmine": "^3.6.11",
     "@types/node": "^14.17.0",
     "@typescript-eslint/eslint-plugin": "4.23.0",

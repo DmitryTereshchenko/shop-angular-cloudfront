@@ -18,6 +18,7 @@ import { CONFIG_TOKEN } from './core/injection-tokens/config.token';
 import { environment } from '../environments/environment';
 import { ErrorPrintInterceptor } from './core/interceptors/error-print.interceptor';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { FooterComponent } from './core/footer/footer.component';
 
 const interceptors: Provider[] = [
   {
@@ -28,7 +29,7 @@ const interceptors: Provider[] = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
