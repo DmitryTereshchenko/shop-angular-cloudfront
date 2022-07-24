@@ -7,7 +7,7 @@ import { Config } from './config.interface';
 export const environment: Config = {
   production: false,
   apiEndpoints: {
-    product: 'https://wx38t7u2ch.execute-api.eu-west-1.amazonaws.com/',
+    product: 'https://zv8ksf3gd2.execute-api.eu-west-1.amazonaws.com/dev',
     order: 'https://.execute-api.eu-west-1.amazonaws.com/dev',
     import: 'https://.execute-api.eu-west-1.amazonaws.com/dev',
     bff: 'https://.execute-api.eu-west-1.amazonaws.com/dev',
